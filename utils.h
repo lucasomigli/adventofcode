@@ -31,6 +31,8 @@ class Solver {
 
   int Solve_day_10_part1();
   int Solve_day_10_part2();
+
+  int Solve_day_11_part1();
 };
 
 #endif
