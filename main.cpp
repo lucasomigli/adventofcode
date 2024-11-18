@@ -11,8 +11,8 @@ int main() {
   std::string inputFile = solutionPath + "/input.txt";
   std::string testFile = solutionPath + "/test.txt";
 
-  Solver solver(testFile);
-  int solution = solver.Solve_day_11_part1();
+  Solver solver(inputFile);
+  int solution = solver.Solve_day_11_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;
