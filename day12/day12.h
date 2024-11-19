@@ -75,22 +75,26 @@ int Solver::Solve_day_12_part2() {
   std::string line;
   char direction;
   int movement;
-  int rotation = 0;
 
-  Ship ship;
-  Waypoint waypoint;
-  waypoint.x = ship.x + 10;
-  waypoint.y = ship.y + 1;
+  struct Ship {
+    int x = 0;
+    int y = 0;
+  } ship;
+
+  struct Waypoint {
+    int x = 10;
+    int y = 1;
+  } waypoint;
 
   while (std::getline(file, line)) {
     direction = line[0];
-    line.erase(0, 1);
-    movement = std::stoi(line);
-    std::cout << movement << " " << direction << std::endl;
+    movement = std::stoi(line.substr(1));
+
+    std::cout << "Command: " << direction << movement << std::endl;
 
     switch (direction) {
       case 'N':
-        waypoint.y += direction;
+        waypoint.y += movement;
         break;
       case 'S':
         waypoint.y -= movement;
@@ -101,30 +105,33 @@ int Solver::Solve_day_12_part2() {
       case 'W':
         waypoint.x -= movement;
         break;
-      case 'L':
-        rotation = (rotation - movement + 360) % 360;
+      case 'L':  // Rotate counterclockwise
+        for (int i = 0; i < movement / 90; ++i) {
+          int tempX = waypoint.x;
+          waypoint.x = -waypoint.y;
+          waypoint.y = tempX;
+        }
         break;
-      case 'R':
-        rotation = (rotation + movement) % 360;
+      case 'R':  // Rotate clockwise
+        for (int i = 0; i < movement / 90; ++i) {
+          int tempX = waypoint.x;
+          waypoint.x = waypoint.y;
+          waypoint.y = -tempX;
+        }
         break;
-      case 'F':
-        int distanceX = waypoint.x - ship.x;
-        int distanceY = waypoint.y - ship.y;
-        //        std::cout << "DEBUG" << movement * (waypoint.x - ship.x) <<
-        //        std::endl;
-        ship.x += movement * (waypoint.x - ship.x);
-        ship.y += movement * (waypoint.y - ship.y);
-        waypoint.x = ship.x + distanceX;
-        waypoint.y = ship.y + distanceY;
+      case 'F':  // Move ship towards waypoint
+        ship.x += movement * waypoint.x;
+        ship.y += movement * waypoint.y;
         break;
     }
 
-    std::cout << "Direction: " << direction << " Movement: " << movement
-              << " ship.x: " << ship.x << " ship.y: " << ship.y
-              << " waypoint.x: " << waypoint.x << " waypoint.y: " << waypoint.y
-              << std::endl;
+    std::cout << "Ship Position: (" << ship.x << ", " << ship.y << "), "
+              << "Waypoint Position: (" << waypoint.x << ", " << waypoint.y
+              << ")" << std::endl;
   }
-  return 1;
+
+  // Manhattan distance from the origin
+  return std::abs(ship.x) + std::abs(ship.y);
 }
 
 #endif
