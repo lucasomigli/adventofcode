@@ -17,7 +17,6 @@ int Solver::Solve_day_12_part1() {
     direction = line[0];
     line.erase(0, 1);
     movement = std::stoi(line);
-    std::cout << movement << " " << direction << std::endl;
 
     switch (direction) {
       case 'N':
@@ -90,8 +89,6 @@ int Solver::Solve_day_12_part2() {
     direction = line[0];
     movement = std::stoi(line.substr(1));
 
-    std::cout << "Command: " << direction << movement << std::endl;
-
     switch (direction) {
       case 'N':
         waypoint.y += movement;
@@ -124,10 +121,6 @@ int Solver::Solve_day_12_part2() {
         ship.y += movement * waypoint.y;
         break;
     }
-
-    std::cout << "Ship Position: (" << ship.x << ", " << ship.y << "), "
-              << "Waypoint Position: (" << waypoint.x << ", " << waypoint.y
-              << ")" << std::endl;
   }
 
   // Manhattan distance from the origin
