@@ -12,7 +12,7 @@ int main() {
   std::string testFile = solutionPath + "/test.txt";
 
   Solver solver(inputFile);
-  unsigned long long solution = solver.Solve_day_14_part1();
+  long long solution = solver.Solve_day_14_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;
