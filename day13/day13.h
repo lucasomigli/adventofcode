@@ -42,52 +42,39 @@ int Solver::Solve_day_13_part1() {
 
 int Solver::Solve_day_13_part2() {
   std::string line;
-  long highestBusId = 0;
-  int highestBusId_t;
-  std::vector<long> buses;
+  std::getline(file, line);  // Skip the earliest timestamp (not used in Part 2)
 
-  // Get earliest time
-  std::getline(file, line);
-
-  // Get list of buses into memory
+  std::vector<std::pair<int, long>> buses;
   int pos_t = 0;
+
+  // Parse bus IDs with offsets
   while (std::getline(file, line, ',')) {
-    if (line == "x") {
-      buses.push_back(0);
-    } else {
-      long busId = std::stol(line);
-      buses.push_back(busId);
-      if (highestBusId < busId) {
-        highestBusId = busId;
-        highestBusId_t = pos_t;
-      }
+    if (line != "x") {
+      unsigned long busId = std::stol(line);
+      buses.emplace_back(pos_t, busId);
     }
     ++pos_t;
   }
 
-  if (highestBusId != buses[highestBusId_t]) {
-    return -1;
-  }
+  // Initialize time and step size
+  unsigned long timestamp = 0;
+  unsigned long step = buses[0].second;
 
-  int i = 1;
-  long relativeTime = 0;
-  bool inLine = false;
-  while (!inLine) {
-    highestBusId = i * buses[highestBusId_t];
-    for (size_t t = 0; t < buses.size(); ++t) {
-      if (buses[t] == 0) continue;
-      relativeTime = highestBusId + (t - highestBusId_t);
-      if (relativeTime % buses[t] != 0) {
-        inLine = false;
-        break;
-      } else {
-        inLine = true;
-      }
+  // Iterate over each bus and offset
+  for (size_t i = 1; i < buses.size(); ++i) {
+    int offset = buses[i].first;
+    unsigned long busId = buses[i].second;
+
+    // Increase timestamp until it satisfies the current bus's offset condition
+    while ((timestamp + offset) % busId != 0) {
+      timestamp += step;
     }
-    ++i;
-  }
 
-  return highestBusId - highestBusId_t;
+    // Multiply step by busId to keep aligned with all previous buses
+    step *= busId;
+  }
+  std::cout << timestamp << std::endl;
+  return timestamp;
 }
 
 #endif
