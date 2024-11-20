@@ -1,9 +1,9 @@
-#include "day12/day12.h"
+#include "day13/day13.h"
 
 int main() {
   std::cout << "Using version " << __cplusplus << std::endl;
 
-  std::string AOC_day = "day12";
+  std::string AOC_day = "day13";
   std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
   std::filesystem::path currentPath = std::filesystem::current_path();
 
@@ -11,9 +11,8 @@ int main() {
   std::string inputFile = solutionPath + "/input.txt";
   std::string testFile = solutionPath + "/test.txt";
 
-  Solver solver(
-      "/Users/luca/eclipse/eclipse-workspace/adventofcode/src/day12/input.txt");
-  int solution = solver.Solve_day_12_part2();
+  Solver solver(inputFile);
+  int solution = solver.Solve_day_13_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;
