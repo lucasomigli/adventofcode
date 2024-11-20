@@ -1,9 +1,9 @@
-#include "day13/day13.h"
+#include "day14/day14.h"
 
 int main() {
   std::cout << "Using version " << __cplusplus << std::endl;
 
-  std::string AOC_day = "day13";
+  std::string AOC_day = "day14";
   std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
   std::filesystem::path currentPath = std::filesystem::current_path();
 
@@ -12,7 +12,7 @@ int main() {
   std::string testFile = solutionPath + "/test.txt";
 
   Solver solver(inputFile);
-  int solution = solver.Solve_day_13_part2();
+  unsigned long long solution = solver.Solve_day_14_part1();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;

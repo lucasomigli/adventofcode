@@ -40,6 +40,9 @@ class Solver {
 
   int Solve_day_13_part1();
   int Solve_day_13_part2();
+
+  int Solve_day_14_part1();
+  int Solve_day_14_part2();
 };
 
 #endif
