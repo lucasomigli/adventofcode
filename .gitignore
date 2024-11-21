@@ -2,3 +2,8 @@
 /Release/
 CMakeLists.txt
 /cmake-build-debug/
+.project
+.cproject
+.DS_Store
+/.idea/
+/.settings/
