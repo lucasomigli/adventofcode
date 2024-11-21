@@ -12,7 +12,7 @@ int main() {
 
   std::cout << solutionPath << std::endl;
   Solver solver("/Users/luca/eclipse/eclipse-workspace/adventofcode/src/day16/input.txt");
-  int solution = solver.Solve_day_16_part2();
+  long long solution = solver.Solve_day_16_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;

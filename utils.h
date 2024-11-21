@@ -47,7 +47,7 @@ class Solver {
   int Solve_day_15(long target);
 
   int Solve_day_16_part1();
-  int Solve_day_16_part2();
+  long long Solve_day_16_part2();
 };
 
 #endif
