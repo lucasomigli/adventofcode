@@ -43,6 +43,8 @@ class Solver {
 
   long Solve_day_14_part1();
   long long Solve_day_14_part2();
+
+  int Solve_day_15(long target);
 };
 
 #endif

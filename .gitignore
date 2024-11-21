@@ -1,2 +1,4 @@
 /Debug/
 /Release/
+CMakeLists.txt
+/cmake-build-debug/
