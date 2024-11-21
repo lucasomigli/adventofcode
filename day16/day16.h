@@ -61,6 +61,7 @@ int Solver::Solve_day_16_part2() {
 
     while (std::regex_search(line, match, regex_field)) {
       fields.push_back(match[0]);
+      std::cout << fields.back() << std::endl;
       line = match.suffix();
     }
 
@@ -110,18 +111,18 @@ int Solver::Solve_day_16_part2() {
   std::string headers[fields.size()];
 
   for (int fieldPosition = 0; fieldPosition < constrictions.size(); ++fieldPosition) {
-    bool isValid = true;
     int goodTicketPosition;
     for (int ticketPosition = 0; ticketPosition < validTickets.size(); ++ticketPosition) {
       bool isValidPair = true;
       for (auto it = validTickets.begin(); it != validTickets.end(); it++) {
-        for (int i = 0; i < (*it).size(); i++) {
+        isValidPair = true;
+        for (int i = 0; i < constrictions[fieldPosition].size(); i++) {
           std::pair<int,int> *currentPair = &constrictions[fieldPosition][i];
           isValidPair = (*it).at(ticketPosition) >= (*currentPair).first &&
           (*it).at(ticketPosition) <= (*currentPair).second;
-          std::cout << (*it).at(ticketPosition) << " " << (*currentPair).first << " " << (*currentPair).second << std::endl;
+          // std::cout << (*it).at(ticketPosition) << " " << (*currentPair).first << " " << (*currentPair).second << std::endl;
           if (isValidPair) {
-            continue;
+            break;
           }
           isValidPair = false;
         }
@@ -129,15 +130,26 @@ int Solver::Solve_day_16_part2() {
           break;
         }
       }
-      if (!isValidPair) {
-        break;
+      if (isValidPair) {
+        goodTicketPosition = ticketPosition;
+      break;
       }
-      goodTicketPosition = ticketPosition;
     }
-    // insert into array at position ticketPosition -> headers[goodTicketPosition] = fields[fieldPosition]
     headers[goodTicketPosition] = fields[fieldPosition];
+    std::cout << headers[goodTicketPosition] << "goodTicketPosition = " << goodTicketPosition << " " << fields[fieldPosition]<< std::endl;
   }
-  return 0;
+
+  // for (auto h : headers) { std::cout << "DEBUG: " << h << std::endl;}
+
+  // finally get values from own ticket (first) with known headers fields
+  long sum = 0;
+  for (int index = 0; index < validTickets[0].size(); index++) {
+    // std::cout << index << " " << headers[index] << " " << validTickets[0][index] << std::endl;
+    if (headers[index].find("departure") != std::string::npos) {
+      sum += validTickets[0][index];
+    }
+  }
+  return sum;
 }
 
 #endif  // DAY16_H

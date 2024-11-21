@@ -11,7 +11,7 @@ int main() {
   std::string testFile = solutionPath + "/test.txt";
 
   std::cout << solutionPath << std::endl;
-  Solver solver("/Users/luca/eclipse/eclipse-workspace/adventofcode/src/day16/test.txt");
+  Solver solver("/Users/luca/eclipse/eclipse-workspace/adventofcode/src/day16/input.txt");
   int solution = solver.Solve_day_16_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
