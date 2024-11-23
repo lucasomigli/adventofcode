@@ -1,5 +1,5 @@
-#ifndef DAY7_H
-#define DAY7_H
+#ifndef DAY07_H
+#define DAY07_H
 
 #ifndef UTILS_H
 #include "../utils.h"
@@ -111,4 +111,4 @@ inline long Solver::Solve_day_7_part1() {
     return static_cast<long>(bagsList.size());
 }
 
-#endif  // DAY7_H
+#endif  // DAY07_H
