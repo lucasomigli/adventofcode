@@ -26,6 +26,9 @@ class Solver {
 
   void Print(std::string &str) { std::cout << str << std::endl; }
 
+    int Solve_day_7_part1();
+    int Solve_day_7_part2();
+
   long Solve_day_9_part1();
   long Solve_day_9_part2();
 
