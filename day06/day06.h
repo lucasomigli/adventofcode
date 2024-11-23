@@ -3,9 +3,10 @@
 #endif
 
 class Day_6_Solver : Solver {
- private:
- public:
-  Day_6_Solver(const std::string &_fileInput) : Solver(_fileInput) {}
+private:
+public:
+  Day_6_Solver(const std::string &_fileInput) : Solver(_fileInput) {
+  }
 
   int findSolution() {
     long finalCount = 0;
@@ -26,7 +27,7 @@ class Day_6_Solver : Solver {
         continue;
       } else {
         std::cout << line << std::endl;
-        for (char c : line) {
+        for (char c: line) {
           if (!isFirstLine) {
             tmpStorage.insert(c);
             continue;
@@ -41,7 +42,7 @@ class Day_6_Solver : Solver {
                                 std::back_inserter(tmp));
           storage.clear();
           tmpStorage.clear();
-          for (int i : tmp) {
+          for (int i: tmp) {
             storage.insert(i);
           }
         }
