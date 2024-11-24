@@ -13,7 +13,7 @@ int main() {
   std::string used = inputFile; // change this to use either the input.txt or test.txt file
   std::cout << "Input file: " << used << std::endl;
   Solver solver(used);
-  long solution = solver.Solve_day_18_part1();
+  long solution = solver.Solve_day_18_part2();
   std::cout << "The Solution is: " << solution << std::endl;
 
   return 0;
