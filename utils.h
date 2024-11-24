@@ -61,11 +61,11 @@ public:
 
     int Solve_day_16_part1();
 
-    long long Solve_day_16_part2();
+    long Solve_day_16_part2();
 
-    long Solve_day_17_part1();
+    long Solve_day_18_part1();
 
-    long Solve_day_17_part2();
+    long Solve_day_18_part2();
 };
 
 #endif
