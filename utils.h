@@ -66,6 +66,10 @@ public:
     long Solve_day_18_part1();
 
     long Solve_day_18_part2();
+
+    int Solve_day_19_part1();
+
+    int Solve_day_19_part2();
 };
 
 #endif
