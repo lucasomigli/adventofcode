@@ -7,3 +7,5 @@ CMakeLists.txt
 .DS_Store
 /.idea/
 /.settings/
+input.txt
+test.txt
