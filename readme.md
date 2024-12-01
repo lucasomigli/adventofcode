@@ -1,1 +1,1 @@
-My personal c++ solutions for adventofcode 2020.
+My personal c++ solutions for adventofcode.
