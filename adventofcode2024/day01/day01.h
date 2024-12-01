@@ -5,10 +5,6 @@
 #include "../utils2024.h"
 #endif
 
-std::multiset<int>::iterator operator+(const std::multiset<int>::iterator &lhs,
-                                       std::__tree_const_iterator<int, std::__tree_node<int, void *> *,
-                                           long>::difference_type rhs);
-
 inline int Solver::Solve_Day01_part1() {
     std::string line;
     int differences = 0;
