@@ -32,6 +32,10 @@ public:
     int Solve_Day01_part1();
 
     int Solve_Day01_part2();
+
+    int Solve_Day02_part1();
+
+    int Solve_Day02_part2();
 };
 
 #endif //UTILS2024_H
