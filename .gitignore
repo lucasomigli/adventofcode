@@ -9,3 +9,6 @@ CMakeLists.txt
 /.settings/
 input.txt
 test.txt
+/.vscode/
+main.d*/
+/src/main

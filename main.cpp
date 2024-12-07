@@ -7,7 +7,7 @@ int main() {
     std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
     std::filesystem::path currentPath = std::filesystem::current_path();
 
-    std::string solutionPath = currentPath.generic_string() + "/" + AOC_day;
+    std::string solutionPath = currentPath.generic_string() + "/src/" + AOC_day;
     std::string inputFile = solutionPath + "/input.txt";
     std::string testFile = solutionPath + "/test.txt";
 
