@@ -1,8 +1,9 @@
 #ifndef DAY04_H
 #define DAY04_H
 
-#include "../utils2024.h"
 #include <array>
+
+#include "../utils2024.h"
 
 struct Coordinate {
     int x;
@@ -22,7 +23,7 @@ inline bool searchDirection(const Coordinate &point, const std::pair<int, int> &
     const std::string target = "XMAS";
     int x = point.x, y = point.y;
 
-    for (char c: target) {
+    for (char c : target) {
         if (x < 0 || y < 0 || x >= bounds.first || y >= bounds.second || M.at({x, y}).letter != c) {
             return false;
         }
@@ -48,14 +49,13 @@ inline int Solver::Solve_Day04_part1() {
     }
 
     const std::array<std::pair<int, int>, 8> directions = {
-        {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, 1}, {-1, 1}, {1, -1}}
-    };
+        {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, 1}, {-1, 1}, {1, -1}}};
 
     // Search starting from 'X'
     for (int x = 0; x < rows; ++x) {
         for (int y = 0; y < cols; ++y) {
             if (M[{x, y}].letter == 'X') {
-                for (const auto &direction: directions) {
+                for (const auto &direction : directions) {
                     result += (searchDirection(M[{x, y}], direction, {rows, cols}, M));
                 }
             }
@@ -113,4 +113,4 @@ inline int Solver::Solve_Day04_part2() {
     return result;
 }
 
-#endif //DAY04_H
+#endif  // DAY04_H

@@ -13,13 +13,12 @@
 #include <unordered_set>
 
 class Solver {
-protected:
+   protected:
     std::fstream file;
     std::string fileInput;
 
-public:
-    Solver() {
-    }
+   public:
+    Solver() {}
 
     Solver(const std::string &_fileInput) : fileInput(_fileInput) {
         this->file.open(_fileInput);
@@ -44,6 +43,10 @@ public:
     int Solve_Day04_part1();
 
     int Solve_Day04_part2();
+
+    long Solve_Day07_part1();
+
+    long Solve_Day07_part2();
 };
 
-#endif //UTILS2024_H
+#endif  // UTILS2024_H
