@@ -25,7 +25,7 @@ inline long Solver::Solve_Day07_part1() {
                 continue;
             }
 
-            for (long &el: combinations) {
+            for (long &el : combinations) {
                 long addition = el + val;
                 long multiplication = el * val;
 
@@ -36,7 +36,7 @@ inline long Solver::Solve_Day07_part1() {
             tmp.clear();
         }
 
-        for (long &value: combinations) {
+        for (long &value : combinations) {
             if (value == target) {
                 result += target;
                 break;
@@ -71,7 +71,7 @@ inline long Solver::Solve_Day07_part2() {
                 continue;
             }
 
-            for (long &el: combinations) {
+            for (long &el : combinations) {
                 long addition = el + val;
                 long multiplication = el * val;
                 long concatenation = std::stol(std::to_string(el) + std::to_string(val));
@@ -84,7 +84,7 @@ inline long Solver::Solve_Day07_part2() {
             tmp.clear();
         }
 
-        for (long &value: combinations) {
+        for (long &value : combinations) {
             if (value == target) {
                 result += target;
                 break;
