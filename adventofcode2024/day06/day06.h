@@ -159,9 +159,6 @@ inline long Solver::Solve_Day06_part2() {
         int x = std::get<0>(tpl), y = std::get<1>(tpl);
         cp_grid[std::make_pair(x, y)].isObstacle = true;
 
-        std::cout << "DEBUG: " << cp_grid[std::make_pair(x, y)].isObstacle << " " << cp_grid[std::make_pair(x, y)].x << " " << cp_grid[std::make_pair(x, y)].y << std::endl;
-        std::cout << "DEBUG: " << grid[std::make_pair(x, y)].isObstacle << " " << grid[std::make_pair(x, y)].x << " " << grid[std::make_pair(x, y)].y << std::endl;
-
         // run through moving the guard again to see if it loop infinitely
         // reset guard position to original
         guardPosition = cp_guardPosition;

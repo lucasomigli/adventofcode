@@ -39,7 +39,6 @@ inline long Solver::Solve_Day05_part1() {
             auto it = sorted.begin();
 
             while (it != sorted.end()) {
-                std::cout << value << " " << *it << std::endl;
                 bool valueGoesBefore = std::find(rules[value].begin(), rules[value].end(), *it) != rules[value].end();
                 bool valueGoesAfter = std::find(rules[*it].begin(), rules[*it].end(), value) != rules[value].end();
                 if (valueGoesBefore) {
@@ -95,7 +94,6 @@ inline long Solver::Solve_Day05_part2() {
             auto it = sorted.begin();
 
             while (it != sorted.end()) {
-                std::cout << value << " " << *it << std::endl;
                 bool valueGoesBefore = std::find(rules[value].begin(), rules[value].end(), *it) != rules[value].end();
                 bool valueGoesAfter = std::find(rules[*it].begin(), rules[*it].end(), value) != rules[value].end();
                 if (valueGoesBefore) {
@@ -105,14 +103,6 @@ inline long Solver::Solve_Day05_part2() {
             }
             sorted.insert(it, value);
         }
-
-        // // debug
-        // std::cout << line << std::endl;
-        // for (auto el : sorted) {
-        //     std::cout << el << " ";
-        // };
-        // std::cout << std::endl;
-        // std::cout << "MID: " << sorted.at(sorted.size() / 2) << std::endl;
 
         // add mid values only if sorted values are on the same order as the originals
         if (!std::equal(sorted.begin(), sorted.end(), unsorted.begin())) {
