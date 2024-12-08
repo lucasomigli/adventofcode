@@ -1,9 +1,9 @@
-#include "adventofcode2024/day06/day06.h"
+#include "adventofcode2024/day05/day05.h"
 
 int main() {
-    std::cout << "Using version " << __cplusplus << std::endl;
+    std::cout << "Using C++ version " << __cplusplus << std::endl;
 
-    std::string AOC_day = R"(adventofcode2024/day06)";
+    std::string AOC_day = R"(adventofcode2024/day05)";
     std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
 
     // find path for current AOC day
@@ -25,11 +25,11 @@ int main() {
     std::string inputFile = currentPath.generic_string() + "/input.txt";
     std::string testFile = currentPath.generic_string() + "/test.txt";
 
-    std::string used = testFile;  // change this to use either the input.txt or test.txt
+    std::string used = inputFile;  // change this to use either the input.txt or test.txt
     std::cout << "Input file: " << used << std::endl;
 
     Solver solver(used);
-    long solution = solver.Solve_Day06_part2();
+    long solution = solver.Solve_Day05_part2();
     std::cout << "The Solution is: " << solution << std::endl;
 
     return 0;
