@@ -5,17 +5,31 @@ int main() {
 
     std::string AOC_day = R"(adventofcode2024/day06)";
     std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
+
+    // find path for current AOC day
     std::filesystem::path currentPath = std::filesystem::current_path();
+    std::regex re(".*" + AOC_day + "$");
+    std::smatch sm;
+    for (const auto& f : std::filesystem::directory_iterator(currentPath)) {
+        if (f.is_directory()) {
+            for (const auto& file : std::filesystem::directory_iterator(std::filesystem::path(f))) {
+                std::string _path = file.path();
+                if (std::regex_search(_path, sm, re)) {
+                    currentPath = file.path();
+                    break;
+                }
+            }
+        }
+    }
 
-    std::string solutionPath = currentPath.generic_string() + "/src/" + AOC_day;
-    std::string inputFile = solutionPath + "/input.txt";
-    std::string testFile = solutionPath + "/test.txt";
+    std::string inputFile = currentPath.generic_string() + "/input.txt";
+    std::string testFile = currentPath.generic_string() + "/test.txt";
 
-    std::string used = testFile;  // change this to use either the input.txt or test.txt file
+    std::string used = testFile;  // change this to use either the input.txt or test.txt
     std::cout << "Input file: " << used << std::endl;
 
     Solver solver(used);
-    long solution = solver.Solve_Day06_part1();
+    long solution = solver.Solve_Day06_part2();
     std::cout << "The Solution is: " << solution << std::endl;
 
     return 0;

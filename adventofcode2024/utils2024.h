@@ -29,27 +29,21 @@ class Solver {
     void Print(std::string &str) { std::cout << str << std::endl; }
 
     int Solve_Day01_part1();
-
     int Solve_Day01_part2();
 
     int Solve_Day02_part1();
-
     int Solve_Day02_part2();
 
     long Solve_Day03_part1();
-
     long Solve_Day03_part2();
 
     int Solve_Day04_part1();
-
     int Solve_Day04_part2();
 
     long Solve_Day06_part1();
-
     long Solve_Day06_part2();
 
     long Solve_Day07_part1();
-
     long Solve_Day07_part2();
 };
 
