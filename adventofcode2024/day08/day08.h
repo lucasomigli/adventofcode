@@ -29,7 +29,7 @@ std::vector<Point> getAllPairs(const std::vector<Point>& points, const std::pair
 
             // filter based on the antinodes being withn map bounds
             for (auto& el : nodes) {
-                if (el.x >= 0 && el.x <= _gridSize.first && el.y >= 0 && el.y <= _gridSize.second) {
+                if (el.x >= 0 && el.x < _gridSize.first && el.y >= 0 && el.y < _gridSize.second) {
                     std::cout << "Antinode: (" << el.x << ", " << el.y << ")" << std::endl;  // debug
                     antinodes.push_back(el);
                 }
@@ -74,6 +74,10 @@ inline long Solver::Solve_Day08_part1() {
     }
 
     std::set<Point> filtered(antinodes.begin(), antinodes.end());
+
+    for (auto& el : filtered) {
+        std::cout << el.x << " " << el.y << " " << el.c << std::endl;
+    }
 
     return filtered.size();
 }

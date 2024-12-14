@@ -11,6 +11,7 @@
 #include <set>
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 
 class Solver {
    protected:
