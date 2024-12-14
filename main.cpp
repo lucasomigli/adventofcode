@@ -25,7 +25,7 @@ int main() {
     std::string inputFile = currentPath.generic_string() + "/input.txt";
     std::string testFile = currentPath.generic_string() + "/test.txt";
 
-    std::string used = inputFile;  // change this to use either the input.txt or test.txt
+    std::string used = testFile;  // change this to use either the input.txt or test.txt
     std::cout << "Input file: " << used << std::endl;
 
     Solver solver(used);
