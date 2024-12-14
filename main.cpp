@@ -29,7 +29,7 @@ int main() {
     std::cout << "Input file: " << used << std::endl;
 
     Solver solver(used);
-    long solution = solver.Solve_Day08_part1();
+    long solution = solver.Solve_Day08_part2();
     std::cout << "The Solution is: " << solution << std::endl;
 
     return 0;
