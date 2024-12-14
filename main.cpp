@@ -1,7 +1,7 @@
 #include "adventofcode2024/day09/day09.h"
 
 int main() {
-    std::cout << "Using version " << __cplusplus << std::endl;
+    std::cout << "Using C++ version " << __cplusplus << std::endl;
 
     std::string AOC_day = R"(adventofcode2024/day09)";
     std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
@@ -25,11 +25,11 @@ int main() {
     std::string inputFile = currentPath.generic_string() + "/input.txt";
     std::string testFile = currentPath.generic_string() + "/test.txt";
 
-    std::string used = "/Users/luca/eclipse/eclipse-workspace/adventofcode/src/adventofcode2024/day09/test.txt";  // change this to use either the input.txt or test.txt
+    std::string used = inputFile;  // change this to use either the input.txt or test.txt
     std::cout << "Input file: " << used << std::endl;
 
     Solver solver(used);
-    long solution = solver.Solve_Day09_part2();
+    long solution = solver.Solve_Day08_part1();
     std::cout << "The Solution is: " << solution << std::endl;
 
     return 0;
