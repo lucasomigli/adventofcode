@@ -10,7 +10,7 @@
 #include <regex>
 #include <set>
 #include <sstream>
-#include <unordered_set>
+#include <unordered_map>
 
 class Solver {
    protected:
@@ -51,6 +51,9 @@ class Solver {
 
     long Solve_Day08_part1();
     long Solve_Day08_part2();
+
+    long Solve_Day09_part1();
+    long Solve_Day09_part2();
 };
 
 #endif  // UTILS2024_H

@@ -1,9 +1,9 @@
-#include "adventofcode2024/day08/day08.h"
+#include "adventofcode2024/day09/day09.h"
 
 int main() {
     std::cout << "Using C++ version " << __cplusplus << std::endl;
 
-    std::string AOC_day = R"(adventofcode2024/day08)";
+    std::string AOC_day = R"(adventofcode2024/day09)";
     std::cout << "AdventOfCode Solution for: " << AOC_day << std::endl;
 
     // find path for current AOC day
