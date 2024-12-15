@@ -58,6 +58,9 @@ class Solver {
 
     long Solve_Day10_part1();
     long Solve_Day10_part2();
+
+    long Solve_Day11_part1();
+    long Solve_Day11_part2();
 };
 
 #endif  // UTILS2024_H
