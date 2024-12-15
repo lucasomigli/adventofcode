@@ -23,6 +23,8 @@ class Solver {
 
     Solver(const std::string &_fileInput) : fileInput(_fileInput) {
         this->file.open(_fileInput);
+
+        std::cout << "Input file: " << _fileInput << std::endl;
     }
 
     virtual ~Solver() { this->file.close(); };
@@ -61,6 +63,9 @@ class Solver {
 
     long Solve_Day11_part1();
     long Solve_Day11_part2();
+
+    long Solve_Day12_part1();
+    long Solve_Day12_part2();
 };
 
 #endif  // UTILS2024_H
