@@ -1,12 +1,11 @@
-#include "adventofcode2024/day12.h"
+#include "adventofcode2024/day13.h"
 
 int main() {
     std::cout << "Using C++ version " << __cplusplus << std::endl;
-    std::filesystem::current_path();
-    std::string INPUTFILE = std::filesystem::current_path().generic_string() + "/input.txt";
+    std::string INPUTFILE = std::filesystem::current_path().generic_string() + "/test.txt";
 
     Solver solver(INPUTFILE);
-    long solution = solver.Solve_Day12_part1();
+    long solution = solver.Solve_Day13_part2();
     std::cout << "The Solution is: " << solution << std::endl;
 
     return 0;
