@@ -1,5 +1,8 @@
-#ifndef DAY13_H
-#define DAY13_H
+#include <cmath>
+#include <limits>
+#include <numeric>
+#include <optional>
+#include <utility>
 
 #include "utils2024.h"
 
@@ -20,39 +23,52 @@ struct Button {
     }
 };
 
-inline int findCheapestButtonCount(long targetX, long targetY, const Button& buttonA, const Button& buttonB, const long maxCount = 100) {
+// Solves a system of two linear equations using Cramer's Rule
+std::optional<std::pair<long, long>> solveLinearSystem(long a_x, long b_x, long targetX, long a_y, long b_y, long targetY) {
+    long determinant = a_x * b_y - a_y * b_x;
+    if (determinant == 0) {
+        return std::nullopt;  // No unique solution
+    }
+
+    long numeratorA = targetX * b_y - targetY * b_x;
+    long numeratorB = targetY * a_x - targetX * a_y;
+
+    // compute integer solutions
+    long a = numeratorA / determinant;
+    long b = numeratorB / determinant;
+
+    // check if the solutions make sense (e.g., integers, non-negative button presses)
+    if (a < 0 || b < 0 || numeratorA % determinant != 0 || numeratorB % determinant != 0) {
+        return std::nullopt;  // No feasible solution
+    }
+
+    return std::make_pair(a, b);
+}
+
+inline long findCheapestButtonCount(long targetX, long targetY, const Button& buttonA, const Button& buttonB, const long maxCount = 100) {
     long minCost = __LONG_MAX__;
 
-    for (const Button& button : {buttonA, buttonB}) {
-        long currentX = 0, currentY = 0;
-        long count = 0;
+    // Coefficients for the system of equations
+    long a_x = buttonA.X, b_x = buttonB.X;
+    long a_y = buttonA.Y, b_y = buttonB.Y;
 
-        while (count < maxCount && currentX <= targetX && currentY <= targetY) {
-            // Increment position with current button
-            currentX += button.X;
-            currentY += button.Y;
-            ++count;
+    // Solve the system of equations
+    auto solution = solveLinearSystem(a_x, b_x, targetX, a_y, b_y, targetY);
 
-            // Calculate the remaining steps for the other button
-            const Button& otherButton = (button.type == 'B') ? buttonA : buttonB;
-            long remainingX = targetX - currentX;
-            long remainingY = targetY - currentY;
+    if (solution) {
+        long A = solution->first;   // number of times button A is pressed
+        long B = solution->second;  // number of times button B is pressed
 
-            if (remainingX % otherButton.X == 0 && remainingY % otherButton.Y == 0) {
-                long targetCountX = remainingX / otherButton.X;
-                long targetCountY = remainingY / otherButton.Y;
-
-                if (targetCountX == targetCountY) {
-                    long totalCost = count * button.cost + targetCountX * otherButton.cost;
-                    minCost = minCost < totalCost ? minCost : totalCost;
-                }
-            }
+        // ensure the solution is valid
+        if (A >= 0 && B >= 0 && A <= maxCount && B <= maxCount) {
+            // Calculate the cost
+            long cost = A * buttonA.cost + B * buttonB.cost;
+            minCost = std::min(minCost, cost);
         }
     }
 
-    return minCost == __LONG_MAX__ ? 0 : minCost;  // return 0 if no valid solution found
+    return minCost == __LONG_MAX__ ? 0 : minCost;  // Return 0 if no valid solution found
 }
-
 inline int Solver::Solve_Day13_part1() {
     std::string line;
     int tokens = 0;
@@ -68,6 +84,7 @@ inline int Solver::Solve_Day13_part1() {
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string s;
+        std::cout << line << std::endl;  // debug
 
         // get left hand side first before the ':'
         std::getline(iss, s, ':');
@@ -98,13 +115,14 @@ inline int Solver::Solve_Day13_part1() {
         if (line == "") {
             int cheapestCount = findCheapestButtonCount(target.X, target.Y, A, B);
             tokens += cheapestCount;
+            std::cout << cheapestCount << std::endl;  // debug
         }
     }
 
     return tokens;
 }
 
-inline int Solver::Solve_Day13_part2() {
+inline long Solver::Solve_Day13_part2() {
     std::string line;
     long tokens = 0;
     std::regex left("(Button (A|B))|(Prize)");
@@ -123,7 +141,7 @@ inline int Solver::Solve_Day13_part2() {
         std::string s;
 
         if (line == "") {
-            int cheapestCount = findCheapestButtonCount(target.X, target.Y, A, B, 100000000000);
+            long cheapestCount = findCheapestButtonCount(target.X, target.Y, A, B, __LONG_MAX__);
             tokens += cheapestCount;
             std::cout << cheapestCount << std::endl;  // debug
             continue;
@@ -154,11 +172,9 @@ inline int Solver::Solve_Day13_part2() {
             s = sm.suffix();
         }
 
-        long m = ptrButton->type == 'T' ? 10000000000000 : 0;
+        long m = ptrButton->type == 'T' ? 10'000'000'000'000 : 0;
         *ptrButton = Button(ptrButton->X + m, ptrButton->Y + m, ptrButton->type);
     }
 
     return tokens;
 }
-
-#endif
