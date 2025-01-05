@@ -92,9 +92,9 @@ inline int Solver::Solve_Day14_part1() {
     return safetyFactor;
 }
 
-struct Grid {
+struct PlayField {
     char grid[103][101];
-    Grid() {
+    PlayField() {
         for (size_t y = 0; y < 103; ++y) {
             for (size_t x = 0; x < 101; ++x) {
                 grid[y][x] = ' ';
@@ -131,7 +131,7 @@ struct Grid {
     }
 
     void Clear() {
-        Grid tmp;
+        PlayField tmp;
         *this = tmp;
     }
 };
@@ -140,7 +140,7 @@ inline int Solver::Solve_Day14_part2() {
     std::string line;
     std::regex position(R"(p\=(-?\d*)\,(-?\d*))");
     std::regex velocity(R"(v\=(-?\d*)\,(-?\d*))");
-    Grid grid;
+    PlayField grid;
 
     int maxIterations = 100000;
 
