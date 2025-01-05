@@ -69,6 +69,9 @@ class Solver {
 
     int Solve_Day13_part1();
     long Solve_Day13_part2();
+
+    int Solve_Day14_part1();
+    int Solve_Day14_part2();
 };
 
 namespace utils {
